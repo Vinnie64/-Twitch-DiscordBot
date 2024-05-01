@@ -55,23 +55,17 @@ class MyBot(discord.Client):
                     is_live = check_if_live(twitchClientID,oauth_token,twitchChannel)
                     if is_live:
                         if twitchChannel not in liveChannels:
-                            print(twitchChannel + " is live\n")
-                            await self.send_message(twitchChannel)
+                            await discordChannel.send("Noob " + twitchChannel + " has gone live! Watch them here: https://twitch.tv/" + twitchChannel)
+                            print("Sent message: Noob " + twitchChannel + " has gone live! Watch them here: https://twitch.tv/" + twitchChannel + "\n")
                             liveChannels.append(twitchChannel)
                     else:
                         #not live
                         if twitchChannel in liveChannels:     
                             liveChannels.remove(twitchChannel)
-                        print(twitchChannel + " is offline\n")      
+                            print(twitchChannel + " is offline\n")      
                 await asyncio.sleep(90)
         else:
             print("discord channel not found")
-
-    async def send_message(self,name):
-        print("sending message:")
-        discordChannel = self.get_channel(discordChannelID)
-        if discordChannel:
-           await discordChannel.send("Noob " + name + " has gone live! Watch them here: https://twitch.tv/" + name)
 
 intents = discord.Intents.default()
 intents.messages = True
