@@ -52,7 +52,7 @@ class MyBot(discord.Client):
 
             while True:
                 for twitchChannel in channels:
-                    is_live = check_if_live(twitchClient_id,oauth_token,twitchChannel)
+                    is_live = check_if_live(twitchClientID,oauth_token,twitchChannel)
                     if is_live:
                         if twitchChannel not in liveChannels:
                             print(twitchChannel + " is live\n")
