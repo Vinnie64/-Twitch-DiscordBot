@@ -62,7 +62,8 @@ class MyBot(discord.Client):
                         #not live
                         if twitchChannel in liveChannels:     
                             liveChannels.remove(twitchChannel)
-                            print(twitchChannel + " is offline\n")      
+                            print(twitchChannel + " is offline\n")
+                    await asyncio.sleep(5)
                 await asyncio.sleep(90)
         else:
             print("discord channel not found")
