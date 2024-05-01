@@ -53,6 +53,7 @@ class MyBot(discord.Client):
             while True:
                 for twitchChannel in channels:
                     is_live = check_if_live(twitchClientID,oauth_token,twitchChannel)
+                    print(f"Checking {twitchChannel}: live status = {is_live}")
                     if is_live:
                         if twitchChannel not in liveChannels:
                             await discordChannel.send("Noob " + twitchChannel + " has gone live! Watch them here: https://twitch.tv/" + twitchChannel)
@@ -62,8 +63,8 @@ class MyBot(discord.Client):
                         #not live
                         if twitchChannel in liveChannels:     
                             liveChannels.remove(twitchChannel)
-                            print(twitchChannel + " is offline\n")
-                    await asyncio.sleep(5)
+                        print(twitchChannel + " is offline\n")
+                    await asyncio.sleep(1)
                 await asyncio.sleep(90)
         else:
             print("discord channel not found")
