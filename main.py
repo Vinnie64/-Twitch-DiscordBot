@@ -29,7 +29,7 @@ class MyBot(discord.Client):
     async def on_ready(self):
 
         print(f'Logged in as {self.user}!')
-        discordChannel = self.get_channel(discordChannelID)  # Replace YOUR_CHANNEL_ID with the actual channel ID
+        discordChannel = self.get_channel(int(discordChannelID))  # Replace YOUR_CHANNEL_ID with the actual channel ID
         if discordChannel:
             await discordChannel.send('Bot has been started!')
             await discordChannel.send("Checking twitch channels")
